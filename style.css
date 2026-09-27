@@ -49,19 +49,21 @@ header span {
   font-weight: bold;
 }
 
-.whatsapp-btn {
+.btn-whatsapp {
     display: inline-block;
     padding: 14px 32px;
+    border: none;
     border-radius: 30px;
     background: linear-gradient(90deg, #4da3ff, #a04cff);
     color: white;
-    text-decoration: none;
     font-size: 18px;
     font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
     transition: 0.3s ease;
 }
 
-.whatsapp-btn:hover {
+.btn-whatsapp:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(120, 80, 255, 0.35);
 }
