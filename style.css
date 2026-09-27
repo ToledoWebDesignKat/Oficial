@@ -52,13 +52,13 @@ header span {
 .btn-whatsapp {
     display: inline-block;
     padding: 14px 32px;
-    border: none;
+    margin-top: 12px;
     border-radius: 30px;
     background: linear-gradient(90deg, #4da3ff, #a04cff);
-    color: white;
+    color: white !important;
+    text-decoration: none !important;
     font-size: 18px;
     font-weight: bold;
-    text-decoration: none;
     cursor: pointer;
     transition: 0.3s ease;
 }
