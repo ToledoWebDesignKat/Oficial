@@ -1,15 +1,83 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #0a0a0a;
+  background: #030305;
   color: white;
+  overflow-x: hidden;
+  position: relative;
 }
+
+/* =========================
+   FUNDO TECNOLÓGICO
+========================= */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: -100%;
+  z-index: -5;
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(
+      rgba(79, 172, 254, 0.15) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(168, 85, 247, 0.15) 1px,
+      transparent 1px
+    );
+
+  background-size: 60px 60px;
+
+  transform: perspective(700px) rotateX(55deg);
+
+  animation: gridMovimento 10s linear infinite;
+}
+
+/* LUZES NO FUNDO */
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -4;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 15% 25%,
+      rgba(79, 172, 254, 0.22),
+      transparent 22%
+    ),
+    radial-gradient(
+      circle at 85% 25%,
+      rgba(168, 85, 247, 0.20),
+      transparent 22%
+    ),
+    radial-gradient(
+      circle at 50% 90%,
+      rgba(79, 172, 254, 0.12),
+      transparent 25%
+    );
+
+  filter: blur(40px);
+
+  animation: luzesMovimento 8s ease-in-out infinite alternate;
+}
+
+
+/* =========================
+   HEADER
+========================= */
 
 header {
   padding: 20px;
   text-align: center;
+  position: relative;
+  z-index: 2;
 }
-
 
 header h1 {
   font-size: 28px;
@@ -21,6 +89,12 @@ header span {
   -webkit-background-clip: text;
   color: transparent;
 }
+
+
+/* =========================
+   HERO
+========================= */
+
 .hero {
   height: 80vh;
   display: flex;
@@ -28,17 +102,104 @@ header span {
   justify-content: center;
   align-items: center;
   text-align: center;
+
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
 
 .hero h2 {
   font-size: 40px;
   max-width: 600px;
+  position: relative;
+  z-index: 2;
 }
 
 .hero p {
   margin: 20px 0;
   color: #ccc;
+  position: relative;
+  z-index: 2;
 }
+
+
+/* =========================
+   LINHA AZUL
+========================= */
+
+.hero::before {
+  content: "";
+
+  position: absolute;
+
+  width: 700px;
+  height: 3px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #4facfe,
+    #ffffff,
+    #4facfe,
+    transparent
+  );
+
+  box-shadow:
+    0 0 8px #4facfe,
+    0 0 20px #4facfe,
+    0 0 40px rgba(79, 172, 254, 0.7);
+
+  transform: rotate(-25deg);
+
+  top: 25%;
+  left: -700px;
+
+  animation: linhaAzul 6s linear infinite;
+
+  z-index: 0;
+}
+
+
+/* =========================
+   LINHA ROXA
+========================= */
+
+.hero::after {
+  content: "";
+
+  position: absolute;
+
+  width: 600px;
+  height: 3px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #a855f7,
+    #ffffff,
+    #a855f7,
+    transparent
+  );
+
+  box-shadow:
+    0 0 8px #a855f7,
+    0 0 20px #a855f7,
+    0 0 40px rgba(168, 85, 247, 0.7);
+
+  transform: rotate(25deg);
+
+  top: 65%;
+  right: -600px;
+
+  animation: linhaRoxa 8s linear infinite;
+
+  z-index: 0;
+}
+
+
+/* =========================
+   BOTÃO
+========================= */
 
 .btn {
   padding: 12px 25px;
@@ -47,12 +208,26 @@ header span {
   color: white;
   text-decoration: none;
   font-weight: bold;
+  transition: 0.3s;
+
+  position: relative;
+  z-index: 5;
+}
+
+.btn:hover {
+  transform: scale(1.05);
 }
 
 
+/* =========================
+   SOBRE
+========================= */
+
 .about {
   padding: 80px 20px;
-  background: #0a0a0a;
+  background: transparent;
+  position: relative;
+  z-index: 2;
 }
 
 .about-container {
@@ -65,7 +240,9 @@ header span {
   flex-wrap: wrap;
 }
 
+
 /* TEXTO */
+
 .about-text {
   flex: 1;
   animation: fadeLeft 1s ease;
@@ -87,7 +264,9 @@ header span {
   color: #4facfe;
 }
 
+
 /* IMAGEM */
+
 .about-img {
   flex: 1;
   text-align: center;
@@ -98,14 +277,22 @@ header span {
   width: 250px;
   border-radius: 20px;
   border: 2px solid #a855f7;
+
+  box-shadow:
+    0 0 15px rgba(168, 85, 247, 0.35);
 }
 
-/* ANIMAÇÕES */
+
+/* =========================
+   ANIMAÇÕES DO SOBRE
+========================= */
+
 @keyframes fadeLeft {
   from {
     opacity: 0;
     transform: translateX(-50px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -117,23 +304,24 @@ header span {
     opacity: 0;
     transform: translateX(50px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
   }
 }
 
-@media (max-width: 768px) {
-  .about-container {
-    flex-direction: column;
-    text-align: center;
-  }
-}
+
+/* =========================
+   TRABALHO
+========================= */
 
 .work {
   padding: 80px 20px;
-  background: #0f0f0f;
+  background: transparent;
   text-align: center;
+  position: relative;
+  z-index: 2;
 }
 
 .work h2 {
@@ -150,12 +338,15 @@ header span {
 }
 
 .work-box {
-  background: #111;
+  background: rgba(10, 10, 10, 0.82);
   padding: 25px;
   border-radius: 15px;
   max-width: 300px;
   transition: 0.3s;
-  border: 1px solid rgba(255,255,255,0.05);
+
+  border: 1px solid rgba(168, 85, 247, 0.15);
+
+  backdrop-filter: blur(8px);
 }
 
 .work-box h3 {
@@ -168,62 +359,181 @@ header span {
   line-height: 1.5;
 }
 
-/* Efeito ao passar o mouse */
+
+/* EFEITO AO PASSAR O MOUSE */
+
 .work-box:hover {
   transform: translateY(-10px);
+
   border: 1px solid #a855f7;
+
+  box-shadow:
+    0 0 20px rgba(168, 85, 247, 0.25);
 }
 
-.btn {
-  padding: 12px 25px;
-  background: linear-gradient(90deg, #4facfe, #a855f7);
-  border-radius: 30px;
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.3s;
+
+/* =========================
+   ANIMAÇÃO DO GRID
+========================= */
+
+@keyframes gridMovimento {
+
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 0 60px;
+  }
+
 }
 
-.btn:hover {
-  transform: scale(1.05);
+
+/* =========================
+   ANIMAÇÃO DAS LUZES
+========================= */
+
+@keyframes luzesMovimento {
+
+  0% {
+    transform: translate(-5%, -3%) scale(1);
+  }
+
+  50% {
+    transform: translate(5%, 3%) scale(1.1);
+  }
+
+  100% {
+    transform: translate(-3%, 5%) scale(1.05);
+  }
+
 }
+
+
+/* =========================
+   LINHA AZUL ANIMADA
+========================= */
+
+@keyframes linhaAzul {
+
+  0% {
+    left: -700px;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 120%;
+    opacity: 0;
+  }
+
+}
+
+
+/* =========================
+   LINHA ROXA ANIMADA
+========================= */
+
+@keyframes linhaRoxa {
+
+  0% {
+    right: -600px;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    right: 120%;
+    opacity: 0;
+  }
+
+}
+
+
+/* =========================
+   WHATSAPP
+========================= */
 
 .whatsapp-fixo {
-    position: fixed !important;
-    right: 20px !important;
-    bottom: 20px !important;
-    top: auto !important;
-    left: auto !important;
+  position: fixed !important;
+  right: 20px !important;
+  bottom: 20px !important;
+  top: auto !important;
+  left: auto !important;
 
-    width: 55px !important;
-    height: 55px !important;
+  width: 55px !important;
+  height: 55px !important;
 
-    background: #25D366 !important;
-    border-radius: 50% !important;
+  background: #25D366 !important;
+  border-radius: 50% !important;
 
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 
-    z-index: 99999 !important;
+  z-index: 99999 !important;
 
-    padding: 0 !important;
-    margin: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
 
-    text-decoration: none !important;
+  text-decoration: none !important;
 }
 
 .whatsapp-fixo img {
-    width: 32px !important;
-    height: 32px !important;
-    max-width: 32px !important;
-    max-height: 32px !important;
+  width: 32px !important;
+  height: 32px !important;
+  max-width: 32px !important;
+  max-height: 32px !important;
 
-    display: block !important;
-    margin: 0 !important;
-    padding: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 768px) {
+
+  body::before {
+    background-size: 45px 45px;
+  }
+
+  .hero h2 {
+    font-size: 30px;
+    padding: 0 20px;
+  }
+
+  .hero::before {
+    width: 450px;
+  }
+
+  .hero::after {
+    width: 400px;
+  }
+
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+}
 .whatsapp-fixo:hover {
     transform: scale(1.08);
 }
