@@ -538,4 +538,51 @@ header span {
     transform: scale(1.08);
 }
 
+/* RODAPÉ - CRÉDITOS, tem q fiar no final desse css*/
+
+.rodape {
+    background: #050505;
+    text-align: center;
+    padding: 40px 20px 20px;
+    border-top: 1px solid #222;
+}
+
+.rodape h2 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.rodape p {
+    color: #aaa;
+    font-size: 14px;
+}
+
+.contatos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+}
+
+.contatos a {
+    color: white;
+    font-size: 35px;
+    transition: 0.3s;
+}
+
+.contatos a:hover {
+    transform: translateY(-5px);
+    color: #4facfe;
+}
+
+.contatos a:hover {
+    transform: translateY(-5px);
+}
+
+.creditos {
+    border-top: 1px solid #222;
+    padding-top: 20px;
+    margin-top: 25px;
+}
+
   
